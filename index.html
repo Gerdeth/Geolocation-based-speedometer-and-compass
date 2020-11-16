@@ -18,6 +18,16 @@
    
   
   <script>
+      const arrow = document.querySelector('.arrow');
+      const speed= document.queryCommandValue('.speed-value');
+      navigator.geolocation.watchPosition((data)=>{
+          console.log(data);
+          speed.textContent= data.coords.speed;
+          arrow.style.transform=`rotate(${data.coords.heading}deg)`;
+      },(err)=>{
+          console.err(err);
+          alert ("NEEDS ACCESS TO LOCATION");
+      });
   </script>
 </body>
 </html>
